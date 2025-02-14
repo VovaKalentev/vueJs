@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUEJS!!!</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+
+    <div class="container" id="app" v-cloak>
+        <div class="card">
+            <h1>{{ title }}</h1>
+            <div class="form-control">
+                <input type="text" :placeholder="inputPl" v-model="input" @keyup.enter.exact="addTask()">
+                <select name="list" id="list" v-model="select" @keypress.enter.prevent>
+                    <option value="1">Личное</option>
+                    <option value="2">Работа</option>
+                    <option value="3">Отдых</option>
+                </select>
+            </div>
+            <button class="btn" @click="addTask()">Добавить</button>
+            <hr/>
+            <h2 v-if="self.length == 0 && work.length == 0 && otd.length == 0">Задач нет</h2>
+            
+            <div border="1" v-if="self.length > 0">
+                <h2>Личное ({{self.length}})</h2>
+                <div class="col" v-for="(task,idx) in self" :key="task">
+                    <p class="disIn">{{task}}</p>
+                    <div class="kor" @click.right.prevent="deleteTask(1,idx)">X</div>
+                </div>
+            </div>
+            <div border="1" v-if="work.length > 0">
+                <h2>Работа ({{work.length}})</h2>
+                <div class="col" v-for="(task,idx) in work" :key="task">
+                    <p class="disIn">{{task}} </p>
+                    <div class="kor" @click.right.prevent="deleteTask(2,idx)">X</div>
+                </div>
+            </div>
+            <div border="1" v-if="otd.length > 0">
+                <h2>Отдых ({{otd.length}})</h2>
+                <div class="col" v-for="(otd,idx) in otd" :key="task">
+                    <p class="disIn">{{task}}</p> 
+                    <div class="kor" @click.right.prevent="deleteTask(3,idx)">X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./vue.global.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

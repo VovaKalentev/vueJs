@@ -9,7 +9,7 @@
 <body>
 
 
-    <div class="container" id="app" v-cloak>
+    <!-- <div class="container" id="app" v-cloak>
         <div class="card">
             <h1>{{ title }}</h1>
             <div class="form-control">
@@ -46,7 +46,42 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <div class="container" id="app" v-cloak>
+        <div class="card">
+            <h1>{{ title }}</h1>
+            <div class="form-control">
+                <select name="list" id="list" v-model="selectOne" @keypress.enter.prevent v-on:click="calc()">
+                    <option value="0" selected disabled>Выберите первую валюту</option>
+                    <option value="1">Рубль</option>
+                    <option value="2">Доллар</option>
+                    <option value="3">Евро</option>
+                </select>
+                <select name="list" id="list" v-model="selectTwo" @keypress.enter.prevent v-on:click="calc()">
+                    <option value="0" selected disabled>Выберите вторую валюту</option>
+                    <option value="1">Рубль</option>
+                    <option value="2">Доллар</option>
+                    <option value="3">Евро</option>
+                </select>
+                <input type="number" :placeholder="inputPl" v-model="count" v-on:input="calc()">
+            </div>
+            <button class="btn" @click="addHistory(total)">Конвертировать</button>
+            <div class="total">
+                <p v-if="!sogl">Введите разную валюту</p>
+                <p v-if="sogl">{{returnTotal}}</p>
+            </div>
+            <hr/>
+            <div class="result">
+                <h2>История конвертациЙ:</h2>
+                <p v-if="results.length == 0" class="">У вас пока нет конвертаций(</p>
+                <p class="card" v-for="item of results">{{item}}</p>
+                <button v-if="results.length != 0" class="btn warning" @click.left.prevent="clearHistory()">Очистить историю</button>
+            </div>
+        </div>
     </div>
+
+
 <script src="./vue.global.js"></script>
 <script src="./app.js"></script>
 </body>

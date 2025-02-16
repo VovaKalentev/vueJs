@@ -74,7 +74,7 @@
             <hr/>
             <div class="result">
                 <h2>История конвертациЙ:</h2>
-                <p v-if="results.length == 0" class="">У вас пока нет конвертаций(</p>
+                <p v-if="results.length == 0">У вас пока нет конвертаций(</p>
                 <p class="card" v-for="item of results">{{item}}</p>
                 <button v-if="results.length != 0" class="btn warning" @click.left.prevent="clearHistory()">Очистить историю</button>
             </div>

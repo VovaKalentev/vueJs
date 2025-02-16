@@ -67,6 +67,7 @@ let meEE = {
         total:'',
         results:[],
         sendHistory:false,
+        lnres:0,
     }),
     methods:{
         addHistory(total){
@@ -129,6 +130,7 @@ let meEE = {
                 console.log("dd");
                 let jsonArray = JSON.stringify(this.results);
                 localStorage.setItem('array', jsonArray);
+                this.lnres = this.results.length;
             }
         }
     }

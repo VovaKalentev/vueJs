@@ -126,7 +126,6 @@ let meEE = {
     watch:{
         sendHistory(){
             if(this.sendHistory){
-                console.log("dd");
                 let jsonArray = JSON.stringify(this.results);
                 localStorage.setItem('array', jsonArray);
             }

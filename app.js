@@ -1,3 +1,4 @@
+"use strict";
 let meEE = {
     // data(){
     //     return {
@@ -69,8 +70,8 @@ let meEE = {
         sendHistory:false,
     }),
     methods:{
-        addHistory(total){
-            this.results.push(total);
+        addHistory(){
+            this.results.push(this.total);
             this.sendHistory = true;
         },
         clearHistory(){
